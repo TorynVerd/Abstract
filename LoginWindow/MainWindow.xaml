@@ -1,0 +1,67 @@
+﻿<Window x:Class="LoginWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginWindow"
+        xmlns:converters="clr-namespace:LoginWindow"
+      
+        mc:Ignorable="d"
+        Title="Login" Height="185"  Width="330" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local:TextInputToBoolConverter x:Key="stringToBool"/>
+    </Window.Resources>
+
+    
+
+
+    <Grid Margin="0,0,4,-6" Height="162" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="38"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Image Name="Letter" Style="{StaticResource Mail}" Source=".\Resources\Images\email-outline.png"  Width="30" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Margin="10,12,0,0" />
+        <Image Name="Lock" Style="{StaticResource Lock}" Source=".\Resources\Images\lock-outline.png"  Width="30" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" Margin="10,0,0,0"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="21,34,3,12">
+            <Rectangle  Stroke="Blue" Margin="5" Width="0" />
+        </StackPanel>
+        
+        
+        
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="21,34,3,12">
+            <Rectangle  Stroke="Blue" Margin="5" Width="0" />
+        </StackPanel>
+        
+
+        <TextBlock Name="First" Height="30" Text="Login" Foreground="Gray" Grid.Column="1" Margin="28,20,158,4" Grid.Row="0"  >
+            <TextBlock.Visibility>
+                <Binding ElementName="Login" Path="Text" />
+            </TextBlock.Visibility>
+        </TextBlock>
+
+        <TextBox Name="Login"  Grid.Column="1"  Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="24,16,14,14" >
+            
+        </TextBox>
+
+
+
+        <TextBlock Height="30" Name="Second"  Text="Password" Foreground="Gray" Grid.Column="1" Margin="26,20,160,4" Grid.Row="1" >
+           
+        </TextBlock>
+
+        <PasswordBox Name="Pass"  local:PasswordBoxExtensions.IsActive="True"   Grid.Column="1" Grid.Row="1"  PasswordChanged="OnPasswordChanged"  Margin="24,16,14,14"/>
+
+
+
+        <Button Width="60" Name="Accept" Height="22" Grid.Column="1" Grid.Row="2" Template="{StaticResource IconButton}"     Content="ACCEPT"  HorizontalAlignment="Left" />
+        <Button Width="60" Name="Cancel" Height="22" Grid.Column="1" Grid.Row="2" IsEnabled="True" 
+                Template="{StaticResource IconButton}" Content="CANCEL"   Click="Close_Click"  HorizontalAlignment="Right" />
+    </Grid>
+</Window>
