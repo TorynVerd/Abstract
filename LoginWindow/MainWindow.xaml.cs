@@ -41,8 +41,7 @@ namespace LoginWindow
             if (Login.Text.Length == 0) 
             {
                 Login.Text = "";
-                First.Text = "";
-                Login.ToolTip = "True";
+               
                 
             }
 
@@ -53,8 +52,8 @@ namespace LoginWindow
         {
             if (Login.Text.Length == 0)
             {
-                Login.Text = "";
-                First.Text = "Login";
+                Login.Text = "Login";
+                          
             }
 
         }

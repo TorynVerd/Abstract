@@ -18,6 +18,7 @@
     <Style TargetType="TextBox">
         <Setter Property="Opacity" Value="0.4" />
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Text" Value="Login"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Opacity" Value="1" />
