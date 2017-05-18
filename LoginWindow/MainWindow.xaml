@@ -29,16 +29,21 @@
         <Image Name="Letter" Style="{StaticResource Mail}" Source=".\Resources\Images\email-outline.png"  Width="30" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Margin="10,12,0,0" />
         <Image Name="Lock" Style="{StaticResource Lock}" Source=".\Resources\Images\lock-outline.png"  Width="30" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" Margin="10,0,0,0"/>
 
-        <StackPanel Grid.Column="1" Grid.Row="0" Margin="21,34,3,12">
-            <Rectangle  Stroke="Blue" Margin="5" Width="0" />
+        <StackPanel  Grid.Column="1" Grid.Row="0" Margin="21,34,3,12">
+            <Rectangle Name="LoginRect" Stroke="Blue" Margin="5" Width="0" />
         </StackPanel>
+
+<!--
         
         
-        
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="21,34,3,12">
-            <Rectangle  Stroke="Blue" Margin="5" Width="0" />
+        -->
+
+        <StackPanel  Grid.Column="1" Grid.Row="1" Margin="21,34,3,12">
+            <Rectangle Name="PassRect" Stroke="Blue" Margin="5" Width="0" Height="0" >
+            </Rectangle>
+            
         </StackPanel>
-        
+      
 
         <TextBlock Name="First" Height="30" Text="Login" Foreground="Gray" Grid.Column="1" Margin="28,20,158,4" Grid.Row="0"  >
             <TextBlock.Visibility>
@@ -46,8 +51,31 @@
             </TextBlock.Visibility>
         </TextBlock>
 
-        <TextBox Name="Login"  Grid.Column="1"  Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="24,16,14,14" >
-            
+        <TextBox Name="Login"  Grid.Column="1"  Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="24,16,14,14" Tag="qqq"  >
+            <TextBox.Triggers>
+                <EventTrigger RoutedEvent="GotFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard >
+                                <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="LoginRect" From="0" To="{Binding ElementName=Login, Path=ActualWidth}"
+                                          AccelerationRatio="1"  Duration="0:0:0.5" />
+                                <DoubleAnimation Storyboard.TargetProperty="Height" Storyboard.TargetName="LoginRect" From="0" To="2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard >
+                                <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="LoginRect"  To="0" AccelerationRatio="1"  Duration="0:0:1" />
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+
+            </TextBox.Triggers>
         </TextBox>
 
 
@@ -56,7 +84,35 @@
            
         </TextBlock>
 
-        <PasswordBox Name="Pass"  local:PasswordBoxExtensions.IsActive="True"   Grid.Column="1" Grid.Row="1"  PasswordChanged="OnPasswordChanged"  Margin="24,16,14,14"/>
+        <PasswordBox Name="Pass"  local:PasswordBoxExtensions.IsActive="True"   Grid.Column="1" Grid.Row="1"  PasswordChanged="OnPasswordChanged"  Margin="24,16,14,14">
+            <PasswordBox.Triggers>
+
+                <EventTrigger RoutedEvent="GotFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard >
+                                <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="PassRect" From="0" To="{Binding ElementName=Pass, Path=ActualWidth}"
+                                          AccelerationRatio="1"  Duration="0:0:0.5" />
+                                <DoubleAnimation Storyboard.TargetProperty="Height" Storyboard.TargetName="PassRect" From="0" To="2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostFocus">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard >
+                                <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="PassRect"  To="0" AccelerationRatio="1"  Duration="0:0:1" />
+                                
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+
+            </PasswordBox.Triggers>
+            
+            
+        </PasswordBox>
 
 
 

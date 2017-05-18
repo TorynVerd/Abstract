@@ -21,8 +21,11 @@ namespace LoginWindow
     /// </summary>
     public partial class MainWindow : Window
     {
+        public LoginModel Model { get; set; }
+
         public MainWindow()
         {
+            Model = new LoginModel();
             InitializeComponent();
             
         }
@@ -40,6 +43,7 @@ namespace LoginWindow
                 Login.Text = "";
                 First.Text = "";
                 Login.ToolTip = "True";
+                
             }
 
            
@@ -63,6 +67,7 @@ namespace LoginWindow
             {
                 Second.Text = "";
                 Pass.ToolTip = "True";
+                Model.Password = Pass.Password;
             }
             else
             {
