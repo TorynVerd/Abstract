@@ -19,8 +19,8 @@
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding ElementName=Login, Path=ToolTip}" Value="True"/>
-                    <Condition Binding="{Binding ElementName=Pass, Path=ToolTip}" Value="True"/>
+                    <Condition Binding="{Binding ElementName=Login, Path=Tag}" Value="True"/>
+                    <Condition Binding="{Binding ElementName=Pass, Path=Tag}" Value="True"/>
                 </MultiDataTrigger.Conditions>
                 <Setter Property="IsEnabled" Value="True" />
                 

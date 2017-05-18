@@ -5,14 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginWindow"
         xmlns:converters="clr-namespace:LoginWindow"
-      
         mc:Ignorable="d"
         Title="Login" Height="185"  Width="330" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <local:TextInputToBoolConverter x:Key="stringToBool"/>
     </Window.Resources>
-
-    
 
 
     <Grid Margin="0,0,4,-6" Height="162" VerticalAlignment="Top">
@@ -26,24 +23,38 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image Name="Letter" Style="{StaticResource Mail}" Source=".\Resources\Images\email-outline.png"  Width="30" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Margin="10,12,0,0" />
-        <Image Name="Lock" Style="{StaticResource Lock}" Source=".\Resources\Images\lock-outline.png"  Width="30" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" Margin="10,0,0,0"/>
 
-        <StackPanel  Grid.Column="1" Grid.Row="0" Margin="21,35,3,6">
+
+        <Viewbox Margin="10,21,0,12" HorizontalAlignment="Left" Width="33" Grid.ColumnSpan="2">
+            <Canvas Width="33" Height="27" RenderTransformOrigin="0.431,0.7" >
+                <Path Style="{StaticResource Mail}" Data="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"  Height="17" Stretch="Fill" Width="24" />
+            </Canvas>
+        </Viewbox>
+
+        <Viewbox Grid.Column="0" Grid.Row="1" Margin="0,16,7,14" HorizontalAlignment="Right" Width="28">
+            <Canvas Width="24" Height="24">
+                <Path  Style="{StaticResource Lock}" Data="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"  />
+            </Canvas>
+        </Viewbox>
+
+
+        <!--
+        <Image Name="Lock" Style="{StaticResource Lock}" Source=".\Resources\Images\lock-outline.png" Grid.Column="0" Grid.Row="1" Margin="6,0,0,6" HorizontalAlignment="Left" Width="26"/>
+-->
+        <StackPanel  Grid.Column="1" Grid.Row="0" Margin="10,35,3,6">
             <Rectangle Name="LoginRect" Stroke="Blue" Margin="5" Width="0" />
         </StackPanel>
 
 
-        <StackPanel  Grid.Column="1" Grid.Row="1" Margin="21,35,3,6">
+        <StackPanel  Grid.Column="1" Grid.Row="1" Margin="10,35,3,6">
             <Rectangle Name="PassRect" Stroke="Blue" Margin="5" Width="0" Height="0" >
             </Rectangle>
-            
         </StackPanel>
-      
-<!--
+
+        <!--
         
 -->
-        <TextBox Name="Login"  Grid.Column="1"  Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="24,16,14,14" >
+        <TextBox Name="Login"  Grid.Column="1"  Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="10,16,14,14" >
             <TextBox.Triggers>
                 <EventTrigger RoutedEvent="GotFocus">
                     <EventTrigger.Actions>
@@ -61,22 +72,20 @@
                         <BeginStoryboard>
                             <Storyboard >
                                 <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="LoginRect"  To="0" AccelerationRatio="1"  Duration="0:0:1" />
-
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
                 </EventTrigger>
-
             </TextBox.Triggers>
         </TextBox>
 
 
 
-        <TextBlock Height="30" Name="Second"  Text="Password" Foreground="Gray" Grid.Column="1" Margin="26,20,160,4" Grid.Row="1" >
-           
+        <TextBlock Height="30" Name="Second"  Text="Password" Foreground="Gray" Grid.Column="1" Margin="10,20,176,4" Grid.Row="1" >
+
         </TextBlock>
 
-        <PasswordBox Name="Pass"   local:PasswordBoxExtensions.IsActive="True"   Grid.Column="1" Grid.Row="1" PasswordChanged="OnPasswordChanged"  Margin="24,16,14,14">
+        <PasswordBox Name="Pass"   local:PasswordBoxExtensions.IsActive="True"   Grid.Column="1" Grid.Row="1" PasswordChanged="OnPasswordChanged"  Margin="10,16,14,14">
             <PasswordBox.Triggers>
 
                 <EventTrigger RoutedEvent="GotFocus">
@@ -95,21 +104,17 @@
                         <BeginStoryboard>
                             <Storyboard >
                                 <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="PassRect"  To="0" AccelerationRatio="1"  Duration="0:0:1" />
-                                
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
                 </EventTrigger>
-
             </PasswordBox.Triggers>
-            
-            
         </PasswordBox>
 
 
 
-        <Button Width="60" Name="Accept" Height="22" Grid.Column="1" Grid.Row="2" Template="{StaticResource IconButton}"     Content="ACCEPT"  HorizontalAlignment="Left" />
-        <Button Width="60" Name="Cancel" Height="22" Grid.Column="1" Grid.Row="2" IsEnabled="True" 
+        <Button Width="60" Name="Accept" Height="32" Grid.Column="1" Grid.Row="2" Template="{StaticResource IconButton}"    Content="ACCEPT"  HorizontalAlignment="Left" />
+        <Button Width="60" Name="Cancel" Height="32" Grid.Column="1" Grid.Row="2" IsEnabled="True" 
                 Template="{StaticResource IconButton}" Content="CANCEL"   Click="Close_Click"  HorizontalAlignment="Right" />
     </Grid>
 </Window>

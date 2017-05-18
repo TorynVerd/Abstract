@@ -42,7 +42,7 @@ namespace LoginWindow
             {
                 Login.Text = "";
                 
-                Login.ToolTip = "True";
+                Login.Tag = "True";
                 
                 
             }
@@ -50,6 +50,7 @@ namespace LoginWindow
            
         }
 
+       
         private void Login_Leave(object sender, EventArgs e)
         {
             if (Login.Text.Length == 0)
@@ -61,6 +62,9 @@ namespace LoginWindow
 
         }
 
+
+
+
         private void OnPasswordChanged(object sender, RoutedEventArgs e)
         {
             PasswordBox pb = sender as PasswordBox;
@@ -68,7 +72,7 @@ namespace LoginWindow
             if (!(bool)pb.Tag)
             {
                 Second.Text = "";
-                Pass.ToolTip = "True";
+                Pass.Tag = "True";
                 Model.Password = Pass.Password;
             }
             else
