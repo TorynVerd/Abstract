@@ -9,7 +9,8 @@
         <Setter Property="FontFamily" Value="Calibri"/>
         <Setter Property="IsEnabled" Value="False" />
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Opacity" Value="0.3"/>
+        <Setter Property="Opacity" Value="0.9"/>
+        <Setter Property="Foreground" Value="#03a9f4"/>
 
     </Style>
   
@@ -19,6 +20,7 @@
         <Setter Property="Opacity" Value="0.4" />
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="Text" Value="Login"/>
+        <Setter Property="BorderBrush" Value="#03a9f4"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Opacity" Value="1" />
@@ -30,6 +32,7 @@
 
     <Style x:Key="Mail" TargetType="Image">
         <Setter Property="Opacity" Value="0.2" />
+        
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=Login, Path=IsMouseOver}" Value="true">
                 <Setter Property="Opacity" Value="1" />
@@ -50,7 +53,7 @@
 
     <Style TargetType="PasswordBox">
         <Setter Property="Opacity" Value="0.2" />
-        
+        <Setter Property="BorderBrush" Value="#03a9f4"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="Tag" Value="False"/>
         
