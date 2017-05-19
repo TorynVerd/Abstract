@@ -47,7 +47,7 @@ namespace LoginWindow
                 
             }
 
-           
+            
         }
 
        
@@ -59,7 +59,7 @@ namespace LoginWindow
                 
                 
             }
-
+            Model.Login = Login.Text;
         }
 
 

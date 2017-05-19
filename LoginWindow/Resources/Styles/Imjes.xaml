@@ -17,17 +17,19 @@
 
 
     <Style TargetType="TextBox">
+        
         <Setter Property="Opacity" Value="0.4" />
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource Self}, Path=ToolTip}"/>
+        
         <Setter Property="BorderBrush" Value="Gray"/>
         <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="false">
+            <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Opacity" Value="1" />
                 <Setter Property="Text" Value=""/>
                 <Setter Property="BorderBrush" Value="#03a9f4"/>
             </Trigger>
-           
+            
         </Style.Triggers>
         
         
