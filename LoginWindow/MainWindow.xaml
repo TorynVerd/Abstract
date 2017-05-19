@@ -24,16 +24,15 @@
         </Grid.RowDefinitions>
 
 
-        <ContentControl Template="{StaticResource Icon}" Width="24" Height="24" 
+        <ContentControl Grid.Row="0" Template="{StaticResource Icon}" Width="24" Height="24" 
                         Tag="{StaticResource EmailIcon}" IsEnabled="{Binding IsFocused, ElementName=Login}"/>
 
+        <ContentControl Grid.Row="1" Template="{StaticResource Icon}" Width="24" Height="24" 
+                        Tag="{StaticResource PassIcon}" IsEnabled="{Binding IsFocused, ElementName=Pass}"/>
 
 
 
-
-        <!--
-        <Image Name="Lock" Style="{StaticResource Lock}" Source=".\Resources\Images\lock-outline.png" Grid.Column="0" Grid.Row="1" Margin="6,0,0,6" HorizontalAlignment="Left" Width="26"/>
--->
+       
         <StackPanel  Grid.Column="1" Grid.Row="0" Margin="10,35,3,6">
             <Rectangle Name="LoginRect" Stroke="Blue" Margin="5" Width="0" />
         </StackPanel>
@@ -47,7 +46,7 @@
         <!--
         
 -->
-        <TextBox Name="Login"  Grid.Column="1"  Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="10,16,14,14" >
+        <TextBox Name="Login" ToolTip="GPP" Grid.Column="1"   Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="10,16,14,14" >
             <TextBox.Triggers>
                 <EventTrigger RoutedEvent="GotFocus">
                     <EventTrigger.Actions>

@@ -5,9 +5,15 @@
             <Image Source="../Images/email.png"/>
         </VisualBrush.Visual>
     </VisualBrush>
+    <VisualBrush x:Key="PassIcon" Stretch="Fill" >
+        <VisualBrush.Visual>
+            <Image Source="../Images/password.png"/>
+        </VisualBrush.Visual>
+    </VisualBrush>
+
 
     <SolidColorBrush x:Key="GrayBrush" Color="Gray"/>
-    <SolidColorBrush x:Key="BlueBrush" Color="Red"/>
+    <SolidColorBrush x:Key="BlueBrush" Color="Blue"/>
 
 
     <ControlTemplate x:Key="Icon" TargetType="ContentControl">

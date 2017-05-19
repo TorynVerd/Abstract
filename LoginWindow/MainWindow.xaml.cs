@@ -42,7 +42,7 @@ namespace LoginWindow
             {
                 Login.Text = "";
                 
-                Login.Tag = "True";
+                
                 
                 
             }
@@ -55,7 +55,7 @@ namespace LoginWindow
         {
             if (Login.Text.Length == 0)
             {
-                Login.Text = "Login";
+                
                 
                 
             }
