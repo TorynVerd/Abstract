@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Styles\Common.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles\Imjes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,8 +116,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Artua-Mac-Earth.ico" />
-    <Resource Include="Resources\Images\email-outline.png" />
-    <Resource Include="Resources\Images\lock-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\email.png" />
+    <Resource Include="Resources\Images\password.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
