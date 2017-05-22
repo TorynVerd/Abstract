@@ -44,9 +44,9 @@
         </StackPanel>
 
         <!--
-        
+        Template="{StaticResource IBox}" 
 -->
-        <TextBox Name="Login" ToolTip="Login" Grid.Column="1" Template="{StaticResource IBox}"  Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="10,16,14,14" >
+        <TextBox Name="Login" ToolTip="Login" Grid.Column="1"   Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="10,16,14,14" >
             <TextBox.Triggers>
                 <EventTrigger RoutedEvent="GotFocus">
                     <EventTrigger.Actions>
