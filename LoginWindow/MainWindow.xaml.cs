@@ -40,7 +40,7 @@ namespace LoginWindow
         {
             if (Login.Text.Length == 0) 
             {
-                Login.Text = "";
+               
                 
                 
                 
@@ -71,13 +71,11 @@ namespace LoginWindow
             pb.Tag = string.IsNullOrEmpty(pb.Password);
             if (!(bool)pb.Tag)
             {
-                Second.Text = "";
-                Pass.Tag = "True";
-                Model.Password = Pass.Password;
+               
             }
             else
             {
-                Second.Text = "Password";
+                
             }
         }
 

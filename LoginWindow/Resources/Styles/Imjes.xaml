@@ -18,19 +18,15 @@
 
     <Style x:Key="LoginBox" TargetType="TextBox">
         <Setter Property="Opacity" Value="0.4" />
-        <Setter Property="BorderThickness" Value="0,0,0,3"/>
-        <Setter Property="BorderBrush" Value="Gray"/>
-        
-        <Setter Property="Template">
+         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
-                        <Border BorderBrush="Red" CornerRadius="2"  />
+                        <Border Name="newBorder" BorderBrush="Gray" Opacity="0.4" BorderThickness="0,0,0,1" />
                         <ScrollViewer x:Name="PART_ContentHost"  >
                         </ScrollViewer>
-                        <TextBlock x:Name="watermarklabel" Height="20" Width="40" HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
+                        <TextBlock x:Name="watermarklabel" Height="20" Width="40"  HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
                     </Grid>
-                    
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -42,29 +38,18 @@
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="watermarklabel" Value="Visible"/>
                         </MultiDataTrigger>
+                        <Trigger  Property="Grid.IsMouseOver" Value="True">
+                            <Setter  TargetName="newBorder" Property="Opacity" Value="1" />
+                            <Setter  TargetName="watermarklabel" Property="Text" Value=""/>
+                            <Setter  TargetName="newBorder" Property="BorderBrush" Value="#03a9f4"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
-                    
-                    
-                    
                 </ControlTemplate>
-                
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Opacity" Value="1" />
-                <Setter Property="Text" Value=""/>
-                <Setter Property="BorderBrush" Value="#03a9f4"/>
-            </Trigger>
-            
-                
-               
-        </Style.Triggers>
     </Style>
 
-    <!--
-    
-    -->
+  
     
     <Style x:Key="Mail" TargetType="Path">
         <Setter Property="Opacity" Value="0.2" />
@@ -91,8 +76,39 @@
 
 
     <Style TargetType="PasswordBox">
-        <Setter Property="Opacity" Value="0.2" />
-        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="Opacity" Value="0.4" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Grid>
+                        <Border Name="newBorder" BorderBrush="Gray" Opacity="0.4" BorderThickness="0,0,0,1" />
+                        <ScrollViewer x:Name="PART_ContentHost"  >
+                        </ScrollViewer>
+                        <TextBlock x:Name="watermarklabel" Height="20" Width="50"  HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Value="">
+                                    <Condition.Binding>
+                                        <Binding RelativeSource="{RelativeSource Self}"  Path="Password"/>
+                                    </Condition.Binding>
+                                </Condition>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="watermarklabel" Value="Visible"/>
+                        </MultiDataTrigger>
+                        <Trigger  Property="Grid.IsMouseOver" Value="True">
+                            <Setter  TargetName="newBorder" Property="Opacity" Value="1" />
+                            <Setter  TargetName="watermarklabel" Property="Text" Value=""/>
+                            <Setter  TargetName="newBorder" Property="BorderBrush" Value="#03a9f4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--
+    <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="Tag" Value="False"/>
         <Style.Triggers>
@@ -101,6 +117,5 @@
                 <Setter Property="BorderBrush" Value="#03a9f4"/>
             </Trigger>
         </Style.Triggers>
-    </Style>
-    
+    -->
 </ResourceDictionary>

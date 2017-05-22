@@ -74,11 +74,9 @@
 
 
 
-        <TextBlock Height="30" Name="Second"  Text="Password" Foreground="Gray" Grid.Column="1" Margin="10,20,176,4" Grid.Row="1" >
+      
 
-        </TextBlock>
-
-        <PasswordBox Name="Pass"   local:PasswordBoxExtensions.IsActive="True"   Grid.Column="1" Grid.Row="1" PasswordChanged="OnPasswordChanged"  Margin="10,16,14,14">
+        <PasswordBox Name="Pass" ToolTip="Password" Grid.Column="1" Grid.Row="1" PasswordChanged="OnPasswordChanged"  Margin="10,16,14,14">
             <PasswordBox.Triggers>
 
                 <EventTrigger RoutedEvent="GotFocus">
