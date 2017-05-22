@@ -3,10 +3,14 @@
                    
                    >
 
-    <ControlTemplate x:Key="TextBoxControl" TargetType="{x:Type TextBox}" >
+   
+<!--
+  
+    
+     <ControlTemplate x:Key="TextBoxControl" TargetType="{x:Type TextBox}" >
         <ControlTemplate.Resources>
             <Style TargetType="{x:Type TextBox}" 
-               BasedOn="{StaticResource StyleForLogin}" />
+               BasedOn="{StaticResource ResourceKey=StyleForLogin}" />
             
         </ControlTemplate.Resources>
         <ControlTemplate.Triggers>
@@ -23,10 +27,6 @@
                
 
     </ControlTemplate>
-<!--
-  
-    
-    
    
     
     -->
