@@ -3,24 +3,31 @@
                    
                    >
 
-    <ControlTemplate x:Key="IBox" TargetType="TextBox">
-        
+    <ControlTemplate x:Key="TextBoxControl" TargetType="{x:Type TextBox}" >
+        <ControlTemplate.Resources>
+            <Style TargetType="{x:Type TextBox}" 
+               BasedOn="{StaticResource StyleForLogin}" />
+            
+        </ControlTemplate.Resources>
         <ControlTemplate.Triggers>
             <Trigger Property="IsFocused" Value="False">
-                <Setter  Property="Text" Value="{Binding ElementName=Login, Path=ToolTip }"/>
+                <Setter  Property="Text" Value="{Binding RelativeSource={RelativeSource Self},Path=ToolTip }"/>
+                <Setter Property="Background" Value="Black"/>
             </Trigger>
-           
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="1" />
+                <Setter Property="Text" Value=""/>
+                <Setter Property="BorderBrush" Value="#03a9f4"/>
+            </Trigger>
         </ControlTemplate.Triggers>
-        
+               
+
     </ControlTemplate>
 <!--
   
-    , RelativeSource={RelativeSource TemplatedParent}
     
-    <ControlTemplate.Resources>
-            <Style TargetType="{x:Type TextBox}" 
-        BasedOn="{StaticResource StyleForLogin}" />
-            </ControlTemplate.Resources>
+    
+   
     
     -->
 </ResourceDictionary>

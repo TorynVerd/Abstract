@@ -4,12 +4,13 @@
                     >
     <local:IsButtonEnabledConverter x:Key="isButtonEnabledConverter" />
     <local:TextInputToBoolConverter x:Key="TextInputToBoolConverter" />
+    
     <ControlTemplate x:Key="IconButton"  TargetType="Button">
       
         <Border Name="Border" BorderThickness="0" 
            Height="22" Width="55" >
             <ContentControl  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" Opacity="1" Content="{TemplateBinding Content}" />
-           </Border>
+        </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="Blue" />
