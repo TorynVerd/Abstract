@@ -5,8 +5,8 @@
         <Setter Property="Width" Value="90" />
         <Setter Property="Margin" Value="150,0,0,30" />
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="FontFamily" Value="Calibri"/>
+        
+        <Setter Property="FontFamily" Value="roboto"/>
         <Setter Property="IsEnabled" Value="False" />
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Opacity" Value="0.9"/>
@@ -22,7 +22,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
-                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
@@ -45,7 +44,7 @@
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="watermarklabel" Value="Visible"/>
                         </MultiDataTrigger>
-                        <EventTrigger RoutedEvent="GotFocus">
+                       <EventTrigger RoutedEvent="GotFocus">
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
                                     <Storyboard >
@@ -163,14 +162,6 @@
         </Setter>
     </Style>
     <!--
-    <Setter Property="BorderBrush" Value="Gray"/>
-        <Setter Property="BorderThickness" Value="0,0,0,1"/>
-        <Setter Property="Tag" Value="False"/>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Opacity" Value="1" />
-                <Setter Property="BorderBrush" Value="#03a9f4"/>
-            </Trigger>
-        </Style.Triggers>
+   
     -->
 </ResourceDictionary>
