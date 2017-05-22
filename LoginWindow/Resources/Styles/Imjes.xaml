@@ -22,10 +22,17 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
                         <Border Name="newBorder" BorderBrush="Gray" Opacity="0.4" BorderThickness="0,0,0,1" />
                         <ScrollViewer x:Name="PART_ContentHost"  >
                         </ScrollViewer>
                         <TextBlock x:Name="watermarklabel" Height="20" Width="40"  HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
+                        <Rectangle Name="LoginRect" Grid.Row="1" StrokeThickness="4" Stroke="Blue" Width="0" Height="0" >
+                        </Rectangle>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
@@ -38,6 +45,26 @@
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="watermarklabel" Value="Visible"/>
                         </MultiDataTrigger>
+                        <EventTrigger RoutedEvent="GotFocus">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard >
+                                        <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="LoginRect" From="0" To="250"
+                                          AccelerationRatio="1"  Duration="0:0:0.5" />
+                                        <DoubleAnimation Storyboard.TargetProperty="Height" Storyboard.TargetName="LoginRect" From="0" To="3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="LostFocus">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard >
+                                        <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="LoginRect"  To="0" AccelerationRatio="1"  Duration="0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
                         <Trigger  Property="Grid.IsMouseOver" Value="True">
                             <Setter  TargetName="newBorder" Property="Opacity" Value="1" />
                             <Setter  TargetName="watermarklabel" Property="Text" Value=""/>
@@ -81,10 +108,18 @@
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
                         <Border Name="newBorder" BorderBrush="Gray" Opacity="0.4" BorderThickness="0,0,0,1" />
                         <ScrollViewer x:Name="PART_ContentHost"  >
                         </ScrollViewer>
-                        <TextBlock x:Name="watermarklabel" Height="20" Width="50"  HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
+                        <TextBlock x:Name="watermarklabel" Height="20" Width="50" Grid.Row="0"  HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
+
+                        <Rectangle Name="PassRect" Grid.Row="1" StrokeThickness="4" Stroke="Blue" Width="0" Height="0" >
+                            </Rectangle>
+                        
                     </Grid>
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
@@ -97,6 +132,26 @@
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="watermarklabel" Value="Visible"/>
                         </MultiDataTrigger>
+                        <EventTrigger RoutedEvent="GotFocus">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard >
+                                        <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="PassRect" From="0" To="250"
+                                          AccelerationRatio="1"  Duration="0:0:0.5" />
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"  Storyboard.TargetName="PassRect" From="0" To="3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="LostFocus">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard >
+                                        <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="PassRect"  To="0" AccelerationRatio="1"  Duration="0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
                         <Trigger  Property="Grid.IsMouseOver" Value="True">
                             <Setter  TargetName="newBorder" Property="Opacity" Value="1" />
                             <Setter  TargetName="watermarklabel" Property="Text" Value=""/>
