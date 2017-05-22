@@ -16,21 +16,21 @@
 
 
 
-    <Style TargetType="TextBox">
+    <Style x:Key="LoginBox" TargetType="TextBox">
         <Setter Property="Opacity" Value="0.4" />
-        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="BorderThickness" Value="0,0,0,3"/>
         <Setter Property="BorderBrush" Value="Gray"/>
         
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
-                        <Border BorderBrush="Red" CornerRadius="2" />
-                        <ScrollViewer x:Name="PART_ContentHost"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Background="{TemplateBinding Background}">
+                        <Border BorderBrush="Red" CornerRadius="2"  />
+                        <ScrollViewer x:Name="PART_ContentHost"  >
                         </ScrollViewer>
-                        <TextBlock x:Name="watermarklabel"  Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
+                        <TextBlock x:Name="watermarklabel" Height="20" Width="40" HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
                     </Grid>
-
+                    
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -43,7 +43,11 @@
                             <Setter Property="Visibility" TargetName="watermarklabel" Value="Visible"/>
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
+                    
+                    
+                    
                 </ControlTemplate>
+                
             </Setter.Value>
         </Setter>
         <Style.Triggers>
@@ -52,6 +56,9 @@
                 <Setter Property="Text" Value=""/>
                 <Setter Property="BorderBrush" Value="#03a9f4"/>
             </Trigger>
+            
+                
+               
         </Style.Triggers>
     </Style>
 

@@ -38,17 +38,16 @@
         </StackPanel>
 
 
-        <StackPanel  Grid.Column="1" Grid.Row="1" Margin="10,35,3,6">
+        <StackPanel  Grid.Column="1" Grid.Row="1" Margin="7,35,6,6">
             <Rectangle Name="PassRect" Stroke="Blue" Margin="5" Width="0" Height="0" >
             </Rectangle>
         </StackPanel>
 
         <!--
-        Template="{StaticResource ResourceKey=TextBoxControl}"
-        Template="{StaticResource TextBoxControl}"
-        Style="{StaticResource StyleForLogin}" 
+       
+        Style="{StaticResource LoginBox}" 
 -->
-        <TextBox Name="Login" ToolTip="Login" Grid.Column="1"   Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="10,16,14,14" >
+        <TextBox Name="Login" ToolTip="Login" Grid.Column="1" Style="{StaticResource LoginBox}"   Grid.Row="0" GotFocus="Enter_Text"  LostFocus="Login_Leave" Margin="10,16,14,14" >
             <TextBox.Triggers>
                 <EventTrigger RoutedEvent="GotFocus">
                     <EventTrigger.Actions>
