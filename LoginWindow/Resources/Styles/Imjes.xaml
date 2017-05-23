@@ -7,11 +7,16 @@
         <Setter Property="Cursor" Value="Hand"/>
         
         <Setter Property="FontFamily" Value="roboto"/>
-        <Setter Property="IsEnabled" Value="False" />
+        <Setter Property="IsEnabled" Value="True" />
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Opacity" Value="0.9"/>
         <Setter Property="Foreground" Value="#03a9f4"/>
-
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="Gray" />
+                
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 
@@ -30,7 +35,7 @@
                         <ScrollViewer x:Name="PART_ContentHost"  >
                         </ScrollViewer>
                         <TextBlock x:Name="watermarklabel" Height="20" Width="40"  HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
-                        <Rectangle Name="LoginRect" Grid.Row="1" StrokeThickness="4" Stroke="Blue" Width="0" Height="0" >
+                        <Rectangle Name="LoginRect" Grid.Row="1" StrokeThickness="4" Stroke="#03a9f4" Margin="0,-4,1,0" Width="0" Height="0" >
                         </Rectangle>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -116,7 +121,7 @@
                         </ScrollViewer>
                         <TextBlock x:Name="watermarklabel" Height="20" Width="50" Grid.Row="0"  HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
 
-                        <Rectangle Name="PassRect" Grid.Row="1" StrokeThickness="4" Stroke="Blue" Width="0" Height="0" >
+                        <Rectangle Name="PassRect" Grid.Row="1" StrokeThickness="4" Stroke="#03a9f4" Margin="0,-4,1,0" Width="0" Height="0" >
                             </Rectangle>
                         
                     </Grid>
@@ -131,6 +136,7 @@
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="watermarklabel" Value="Visible"/>
                         </MultiDataTrigger>
+                        
                         <EventTrigger RoutedEvent="GotFocus">
                             <EventTrigger.Actions>
                                 <BeginStoryboard>
@@ -138,6 +144,20 @@
                                         <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="PassRect" From="0" To="250"
                                           AccelerationRatio="1"  Duration="0:0:0.5" />
                                         <DoubleAnimation Storyboard.TargetProperty="Height"  Storyboard.TargetName="PassRect" From="0" To="3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="PasswordChanged">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard >
+                                        <BooleanAnimationUsingKeyFrames 
+                                            Storyboard.Target="{Binding ElementName=Pass}" 
+                                            Storyboard.TargetProperty="Tag"
+                                            Duration="0:0:0.01" FillBehavior="HoldEnd">
+                                            <DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:0.01" />
+                                        </BooleanAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
@@ -151,6 +171,7 @@
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
+                       
                         <Trigger  Property="Grid.IsMouseOver" Value="True">
                             <Setter  TargetName="newBorder" Property="Opacity" Value="1" />
                             <Setter  TargetName="watermarklabel" Property="Text" Value=""/>

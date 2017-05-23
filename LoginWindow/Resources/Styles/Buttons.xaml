@@ -20,10 +20,10 @@
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding ElementName=Login, Path=Tag}" Value="True"/>
-                    <Condition Binding="{Binding ElementName=Pass, Path=Tag}" Value="True"/>
+                    <Condition Binding="{Binding ElementName=Login, Path=Text}" Value=""/>
+                    
                 </MultiDataTrigger.Conditions>
-                <Setter Property="IsEnabled" Value="True" />
+                <Setter Property="IsEnabled" Value="False" />
                 
             </MultiDataTrigger>
 
@@ -32,7 +32,7 @@
 
     <!--
     
-    
+     <Condition Binding="{Binding ElementName=Pass, Path=Tag}" Value="True"/>
     
     -->      
     

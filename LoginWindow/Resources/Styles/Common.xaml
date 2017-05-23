@@ -13,7 +13,7 @@
 
 
     <SolidColorBrush x:Key="GrayBrush" Color="Gray"/>
-    <SolidColorBrush x:Key="BlueBrush" Color="Blue"/>
+    <SolidColorBrush x:Key="BlueBrush" Color="#03a9f4"/>
 
 
     <ControlTemplate x:Key="Icon" TargetType="ContentControl">

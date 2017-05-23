@@ -33,7 +33,7 @@
 
 
        
-        <TextBox Name="Login" ToolTip="Login" Grid.Column="1" Style="{StaticResource LoginBox}"   Grid.Row="0"  Margin="10,16,14,14" >
+        <TextBox Name="Login" ToolTip="Email" Grid.Column="1" Style="{StaticResource LoginBox}"   Grid.Row="0"  Margin="10,16,14,14" >
             
         </TextBox>
 
