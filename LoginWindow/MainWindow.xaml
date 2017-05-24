@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginWindow"
         xmlns:converters="clr-namespace:LoginWindow"
-        mc:Ignorable="d"
+        x:Name="_this"
+        mc:Ignorable="d" DataContext="{Binding Model, ElementName=_this}"
         Title="Login" Height="185"  Width="330" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
     <Window.Resources>
-   
+
     </Window.Resources>
 
 
@@ -28,26 +29,30 @@
                         Tag="{StaticResource EmailIcon}" IsEnabled="{Binding IsFocused, ElementName=Login}"/>
 
         <ContentControl Grid.Row="1" Template="{StaticResource Icon}" Width="24" Height="24" 
-                        Tag="{StaticResource PassIcon}" IsEnabled="{Binding IsFocused, ElementName=Pass}"/>
-
-
-
-       
-        <TextBox Name="Login" ToolTip="Email" Grid.Column="1" Style="{StaticResource LoginBox}"   Grid.Row="0"  Margin="10,16,14,14" >
-            
-        </TextBox>
+                        Tag="{StaticResource PassIcon}" IsEnabled="{Binding IsFocused, ElementName=Pass}" Margin="7,6,7,24"/>
 
 
 
 
-        <PasswordBox Name="Pass" ToolTip="Password" Grid.Column="1" Grid.Row="1" PasswordChanged="OnPasswordChanged"  Margin="10,16,14,14">
-            
+        <TextBox Name="Login" ToolTip="Email" Grid.Column="1" Style="{StaticResource LoginBox}" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"
+                 Grid.Row="0"  Margin="10,16,14,14" />
+
+
+
+
+        <PasswordBox Name="Pass" ToolTip="Password" Grid.Column="1" Grid.Row="1" PasswordChanged="OnPasswordChanged"  Margin="10,6,14,24">
+
         </PasswordBox>
 
 
 
-        <Button Width="60" Name="Accept" Height="32" Grid.Column="1" Grid.Row="2" Template="{StaticResource IconButton}"    Content="ACCEPT"  HorizontalAlignment="Left" />
-        <Button Width="60" Name="Cancel" Height="32" Grid.Column="1" Grid.Row="2" IsEnabled="True" 
-                Template="{StaticResource IconButton}" Content="CANCEL"   Click="Close_Click"  HorizontalAlignment="Right" />
+        <Button Width="60" Name="Accept" Height="32" Grid.Column="1" Grid.Row="1" Template="{StaticResource IconButton}"
+                Content="ACCEPT"  HorizontalAlignment="Left" Margin="132,46,0,30" Grid.RowSpan="2"
+                Command="{Binding AcceptCommand}" />
+
+
+
+        <Button Width="60" Name="Cancel" Height="32" Grid.Column="1" Grid.Row="1" IsEnabled="True" 
+                Template="{StaticResource IconButton}" Content="CANCEL"   Click="Close_Click"  HorizontalAlignment="Right" Margin="0,46,6,30" Grid.RowSpan="2" />
     </Grid>
 </Window>

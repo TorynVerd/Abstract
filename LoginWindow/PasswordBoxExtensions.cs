@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +7,7 @@ using System.Windows.Controls;
 
 namespace LoginWindow
 {
+
     public static class PasswordBoxExtensions
     {
         public static readonly DependencyProperty IsActiveProperty =

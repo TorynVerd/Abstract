@@ -3,9 +3,9 @@
 
     <Style  TargetType="Button">
         <Setter Property="Width" Value="90" />
-        <Setter Property="Margin" Value="150,0,0,30" />
+        <Setter Property="Margin" Value="190,0,0,70" />
         <Setter Property="Cursor" Value="Hand"/>
-        
+        <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="FontFamily" Value="roboto"/>
         <Setter Property="IsEnabled" Value="True" />
         <Setter Property="BorderThickness" Value="0"/>
@@ -26,18 +26,24 @@
          <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="6*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border Name="newBorder" BorderBrush="Gray" Opacity="0.4" BorderThickness="0,0,0,1" />
-                        <ScrollViewer x:Name="PART_ContentHost"  >
-                        </ScrollViewer>
-                        <TextBlock x:Name="watermarklabel" Height="20" Width="40"  HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
-                        <Rectangle Name="LoginRect" Grid.Row="1" StrokeThickness="4" Stroke="#03a9f4" Margin="0,-4,1,0" Width="0" Height="0" >
-                        </Rectangle>
-                    </Grid>
+
+                        <Border Name="newBorder" BorderBrush="Gray" BorderThickness="0,0,0,1">
+                            <Grid>
+                                <ScrollViewer x:Name="PART_ContentHost"  />
+                                <TextBlock x:Name="watermarklabel"  HorizontalAlignment="Left"
+                                   Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
+
+                            <Rectangle Name="LoginRect" Grid.Row="1" Visibility="Visible" HorizontalAlignment="Stretch"
+                                       Fill="{StaticResource BlueBrush}" VerticalAlignment="Bottom"
+                                   Height="2" RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.RenderTransform>
+                                    <ScaleTransform x:Name="TransformRect"  ScaleX="1" ScaleY="1"   />
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </Grid>
+                            
+                        </Border>
+
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -49,28 +55,34 @@
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="watermarklabel" Value="Visible"/>
                         </MultiDataTrigger>
-                       <EventTrigger RoutedEvent="GotFocus">
-                            <EventTrigger.Actions>
+                        
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="LoginRect" Property="Visibility" Value="Visible"/>
+                            <Trigger.EnterActions>
                                 <BeginStoryboard>
-                                    <Storyboard >
-                                        <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="LoginRect" From="0" To="250"
-                                          AccelerationRatio="1"  Duration="0:0:0.5" />
-                                        <DoubleAnimation Storyboard.TargetProperty="Height" Storyboard.TargetName="LoginRect" From="0" To="3"/>
+                                    <Storyboard SpeedRatio="3" >
+                                        <DoubleAnimation Storyboard.TargetName="TransformRect" Storyboard.TargetProperty="ScaleX"
+                                                   FillBehavior="HoldEnd" From="0" To="1" Duration="0:0:1" AccelerationRatio="1"/>
+
+                                        </Storyboard>
+                                </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard SpeedRatio="3">
+                                        <DoubleAnimation Storyboard.TargetName="TransformRect" Storyboard.TargetProperty="ScaleX" 
+                                                         To="0" Duration="0:0:1" AccelerationRatio="1"/>
+
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="LostFocus">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard >
-                                        <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="LoginRect"  To="0" AccelerationRatio="1"  Duration="0:0:1" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
-                        <Trigger  Property="Grid.IsMouseOver" Value="True">
-                            <Setter  TargetName="newBorder" Property="Opacity" Value="1" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+                       
+                        <Trigger  Property="IsMouseOver" Value="True">
+                            <Setter  TargetName="watermarklabel" Property="Text" Value=""/>
+                            <Setter  TargetName="newBorder" Property="BorderBrush" Value="#03a9f4"/>
+                        </Trigger>
+                        <Trigger  Property="IsFocused" Value="True">
                             <Setter  TargetName="watermarklabel" Property="Text" Value=""/>
                             <Setter  TargetName="newBorder" Property="BorderBrush" Value="#03a9f4"/>
                         </Trigger>
@@ -111,21 +123,24 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="6*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border Name="newBorder" BorderBrush="Gray" Opacity="0.4" BorderThickness="0,0,0,1" />
-                        <ScrollViewer x:Name="PART_ContentHost"  >
-                        </ScrollViewer>
-                        <TextBlock x:Name="watermarklabel" Height="20" Width="50" Grid.Row="0"  HorizontalAlignment="Left" Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
 
-                        <Rectangle Name="PassRect" Grid.Row="1" StrokeThickness="4" Stroke="#03a9f4" Margin="0,-4,1,0" Width="0" Height="0" >
+                    <Border Name="newBorder" BorderBrush="Gray" BorderThickness="0,0,0,1">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost"  />
+                            <TextBlock x:Name="watermarklabel"  HorizontalAlignment="Left"
+                                   Text="{TemplateBinding ToolTip}" Foreground="Gray" Visibility="Collapsed"/>
+
+                            <Rectangle Name="PassRect" Grid.Row="1" Visibility="Visible" HorizontalAlignment="Stretch"
+                                       Fill="{StaticResource BlueBrush}" VerticalAlignment="Bottom"
+                                   Height="2" RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.RenderTransform>
+                                    <ScaleTransform x:Name="TransformRect"  ScaleX="1" ScaleY="1"   />
+                                </Rectangle.RenderTransform>
                             </Rectangle>
-                        
-                    </Grid>
-                    <ControlTemplate.Triggers>
+                        </Grid>
+
+                    </Border>
+                   <ControlTemplate.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Value="">
@@ -133,45 +148,34 @@
                                         <Binding RelativeSource="{RelativeSource Self}"  Path="Password"/>
                                     </Condition.Binding>
                                 </Condition>
+                                <Condition Binding="{Binding Password.Length, ElementName=Pass, UpdateSourceTrigger=PropertyChanged}" Value="0"/>
+
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="watermarklabel" Value="Visible"/>
                         </MultiDataTrigger>
                         
-                        <EventTrigger RoutedEvent="GotFocus">
-                            <EventTrigger.Actions>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="PassRect" Property="Visibility" Value="Visible"/>
+                            <Trigger.EnterActions>
                                 <BeginStoryboard>
-                                    <Storyboard >
-                                        <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="PassRect" From="0" To="250"
-                                          AccelerationRatio="1"  Duration="0:0:0.5" />
-                                        <DoubleAnimation Storyboard.TargetProperty="Height"  Storyboard.TargetName="PassRect" From="0" To="3"/>
+                                    <Storyboard SpeedRatio="3" >
+                                        <DoubleAnimation Storyboard.TargetName="TransformRect" Storyboard.TargetProperty="ScaleX"
+                                                   FillBehavior="HoldEnd" From="0" To="1" Duration="0:0:1" AccelerationRatio="1"/>
+
+                                        </Storyboard>
+                                </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard SpeedRatio="3">
+                                        <DoubleAnimation Storyboard.TargetName="TransformRect" Storyboard.TargetProperty="ScaleX" 
+                                                         To="0" Duration="0:0:1" AccelerationRatio="1"/>
+
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="PasswordChanged">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard >
-                                        <BooleanAnimationUsingKeyFrames 
-                                            Storyboard.Target="{Binding ElementName=Pass}" 
-                                            Storyboard.TargetProperty="Tag"
-                                            Duration="0:0:0.01" FillBehavior="HoldEnd">
-                                            <DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:0.01" />
-                                        </BooleanAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="LostFocus">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard >
-                                        <DoubleAnimation Storyboard.TargetProperty="Width" Storyboard.TargetName="PassRect"  To="0" AccelerationRatio="1"  Duration="0:0:1" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
-                       
+                            </Trigger.ExitActions>
+                        </Trigger>
+
                         <Trigger  Property="Grid.IsMouseOver" Value="True">
                             <Setter  TargetName="newBorder" Property="Opacity" Value="1" />
                             <Setter  TargetName="watermarklabel" Property="Text" Value=""/>
